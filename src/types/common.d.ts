@@ -24,22 +24,35 @@ declare interface TextProps extends Partial<AbsoluteCssProps> {
 }
 
 /* Button */
-declare interface ButtonProps extends Partial<AbsoluteCssProps>, Partial<HTMLButtonElement> {
+declare interface ButtonProps extends Partial<AbsoluteCssProps> {
   text: string;
-  children?: React.ReactNode;
 }
 
 /* CommunityTop */
 declare interface CommunityTopProps {
   children: React.ReactNode;
 }
+
 /* SelectBox */
 declare interface SelectBoxProps extends Partial<AbsoluteCssProps> {
   defaultValue?: string | number;
-  setSelectedId?: (id: string) => void;
-  setSelectedText?: (text: string) => void;
   children: React.ReactNode;
+  getSelectedId?: (id: string) => void;
+  getSelectedText?: (text: string) => void;
 }
 
 /* Input */
-declare interface InputProps extends Partial<AbsoluteCssProps>, Partial<HTMLInputElement> {}
+declare interface InputProps extends Partial<AbsoluteCssProps> {
+  placeholder?: string;
+}
+
+/* Editor */
+declare interface EditorProps extends Partial<AbsoluteCssProps> {
+  placeholder?: string;
+  limit?: number;
+  htmlValue?: string;
+  getEdiotrLength?: (langth: number) => void;
+  isDisabled?: boolean;
+}
+
+// 인터페이스 수정

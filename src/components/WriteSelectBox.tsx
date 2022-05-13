@@ -46,9 +46,7 @@ const WriteSelectBox = () => {
   return (
     <>
       <SelectBox
-        setSelectedId={id => {
-          console.log(id);
-        }}
+        getSelectedId={id => console.log(id)}
         defaultValue={'대선청원'}
         left="20px"
         top="68px"

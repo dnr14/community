@@ -2,7 +2,7 @@ import { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { createFlexBox, themeColorGray1, themeColorWhite, themeFontSizePrimary } from 'src/assets/styles/theme';
 import styled, { css } from 'styled-components';
 
-const SelectBox: FC<SelectBoxProps> = ({ defaultValue, children, setSelectedId, setSelectedText, ...rest }) => {
+const SelectBox: FC<SelectBoxProps> = ({ defaultValue, children, getSelectedId, getSelectedText, ...rest }) => {
   const [selected, setSelected] = useState(defaultValue);
   const [visible, setVisible] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -21,15 +21,15 @@ const SelectBox: FC<SelectBoxProps> = ({ defaultValue, children, setSelectedId, 
         setSelected(target.innerText);
         setVisible(false);
         isClosed.current = true;
-        if (setSelectedText instanceof Function && setSelectedText !== undefined) {
-          setSelectedText(target.innerText);
+        if (getSelectedText instanceof Function && getSelectedText !== undefined) {
+          getSelectedText(target.innerText);
         }
-        if (setSelectedId instanceof Function && setSelectedId !== undefined) {
-          setSelectedId(target.id);
+        if (getSelectedId instanceof Function && getSelectedId !== undefined) {
+          getSelectedId(target.id);
         }
       }
     },
-    [setSelectedId, setSelectedText],
+    [getSelectedId, getSelectedText],
   );
 
   const handleCloseClickOutside = useCallback(
