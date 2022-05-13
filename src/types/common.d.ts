@@ -30,3 +30,10 @@ declare interface ButtonProps extends Partial<AbsoluteCssProps> {
 declare interface CommunityTopProps {
   children: React.ReactNode;
 }
+/* SelectBox */
+declare interface SelectBoxProps extends Partial<AbsoluteCssProps> {
+  defaultValue?: string | number;
+  setSelectedId?: (id: string) => void;
+  setSelectedText?: (text: string) => void;
+  children: React.ReactNode;
+}

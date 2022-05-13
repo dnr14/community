@@ -3,6 +3,7 @@ import Button from 'common/Button';
 import CommunityTop from 'common/CommunityTop';
 import Text from 'common/Text';
 import useGoback from 'src/hooks/useGoback';
+import BaseLine from './common/BaseLine';
 
 const WriteTop = () => {
   const handleGoback = useGoback();
@@ -19,6 +20,7 @@ const WriteTop = () => {
         top="calc(50% - 21px / 2 - 0.5px)"
       />
       <Button text="완료" width="64px" height="36px" top="10px" left="286px" />
+      <BaseLine top="56px" />
     </CommunityTop>
   );
 };
