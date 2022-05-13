@@ -5,6 +5,9 @@ interface AbsoluteCssProps {
   right: string;
   width: string;
   height: string;
+  fontSize: string;
+  fontWeight: string;
+  lineHeight: string;
 }
 
 /* BaseLineProps  */
@@ -18,12 +21,12 @@ declare interface BackIconProps extends Partial<AbsoluteCssProps> {
 /* Text */
 declare interface TextProps extends Partial<AbsoluteCssProps> {
   text: string;
-  lineHeight?: string;
 }
 
 /* Button */
-declare interface ButtonProps extends Partial<AbsoluteCssProps> {
+declare interface ButtonProps extends Partial<AbsoluteCssProps>, Partial<HTMLButtonElement> {
   text: string;
+  children?: React.ReactNode;
 }
 
 /* CommunityTop */
@@ -37,3 +40,6 @@ declare interface SelectBoxProps extends Partial<AbsoluteCssProps> {
   setSelectedText?: (text: string) => void;
   children: React.ReactNode;
 }
+
+/* Input */
+declare interface InputProps extends Partial<AbsoluteCssProps>, Partial<HTMLInputElement> {}

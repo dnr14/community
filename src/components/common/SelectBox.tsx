@@ -1,5 +1,5 @@
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
-import { createFlexBox, themeColorGray, themeColorWhite, themeFontSizePrimary } from 'src/assets/styles/theme';
+import { createFlexBox, themeColorGray1, themeColorWhite, themeFontSizePrimary } from 'src/assets/styles/theme';
 import styled, { css } from 'styled-components';
 
 const SelectBox: FC<SelectBoxProps> = ({ defaultValue, children, setSelectedId, setSelectedText, ...rest }) => {
@@ -128,7 +128,7 @@ const SelectList = styled.ul<{ visible: boolean }>`
   right: 0;
   overflow: hidden;
   background: ${themeColorWhite};
-  border: 1px solid ${themeColorGray};
+  border: 1px solid ${themeColorGray1};
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   transition: opacity 0.5s, transform 0.35s, z-index 0.35s ease-in;

@@ -6,7 +6,7 @@ const Text: FC<TextProps> = ({ text, ...rest }) => {
   return <TextWrapper {...rest}>{text}</TextWrapper>;
 };
 
-const TextWrapper = styled.div<Omit<TextProps, 'text'>>`
+const TextWrapper = styled.p<Omit<TextProps, 'text'>>`
   color: ${themeColorBlack};
   font-size: ${themeFontSizePrimary};
   font-weight: 700;

@@ -5,7 +5,8 @@ const color = {
   primary: '#2C7FFF',
   black: '#222222',
   white: '#FFFFFF',
-  gray: '#E8E8E8',
+  gray1: '#E8E8E8',
+  gray2: '#B4B4B4',
 };
 
 const fontSize = {
@@ -19,7 +20,8 @@ const theme = {
 const themeColorBlack: ThemeUtilFunc = ({ theme: { color } }) => color.black;
 const themeColorPrimary: ThemeUtilFunc = ({ theme: { color } }) => color.primary;
 const themeColorWhite: ThemeUtilFunc = ({ theme: { color } }) => color.white;
-const themeColorGray: ThemeUtilFunc = ({ theme: { color } }) => color.gray;
+const themeColorGray1: ThemeUtilFunc = ({ theme: { color } }) => color.gray1;
+const themeColorGray2: ThemeUtilFunc = ({ theme: { color } }) => color.gray2;
 const themeFontSizePrimary: ThemeUtilFunc = ({ theme: { fontSize } }) => fontSize.primary;
 
 const createFlexBox = (justifyContent: string, alignItems: string, flexDirection?: string) => css`
@@ -36,6 +38,7 @@ export {
   themeColorWhite,
   themeFontSizePrimary,
   themeColorPrimary,
-  themeColorGray,
+  themeColorGray1,
+  themeColorGray2,
 };
 export type Theme = typeof theme;
