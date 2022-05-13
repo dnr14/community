@@ -6,13 +6,13 @@ const BaseLine: FC<BaseLineProps> = ({ ...rest }) => <BaseLineWrapper {...rest} 
 
 const BaseLineWrapper = styled.div<BaseLineProps>`
   position: absolute;
-  width: 360px;
-  height: 1px;
-  left: 0px;
   background: ${themeColorGray1};
-  ${({ top }) =>
+  ${({ top, width, left, height }) =>
     css`
+      height: ${height ?? '1px'};
       top: ${top};
+      left: ${left ?? '0px'};
+      width: ${width ?? '360px'};
     `}
 `;
 

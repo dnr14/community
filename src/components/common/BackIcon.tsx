@@ -3,13 +3,11 @@ import styled from 'styled-components';
 import backIcon from 'assets/images/back.svg';
 import { FC } from 'react';
 
-const BackIcon: FC<BackIconProps> = ({ handleGoBack }) => {
-  return (
-    <BackIconWrapper onClick={handleGoBack}>
-      <img src={backIcon} alt="backIcon" />
-    </BackIconWrapper>
-  );
-};
+const BackIcon: FC<BackIconProps> = ({ handleGoBack }) => (
+  <BackIconWrapper onClick={handleGoBack}>
+    <img src={backIcon} alt="backIcon" />
+  </BackIconWrapper>
+);
 
 const BackIconWrapper = styled.div`
   position: absolute;
