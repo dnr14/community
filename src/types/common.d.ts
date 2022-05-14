@@ -45,6 +45,9 @@ declare interface SelectBoxProps extends Partial<AbsoluteCssProps> {
 declare interface InputProps extends Partial<AbsoluteCssProps> {
   placeholder?: string;
   type: string;
+  value?: string;
+  maxLength?: number;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 /* Editor */
@@ -59,4 +62,10 @@ declare interface EditorProps extends Partial<AbsoluteCssProps> {
 /* Empty */
 declare interface EmptyProps extends Partial<AbsoluteCssProps> {
   text: string;
+}
+
+/* ErrorMessage */
+declare interface ErrorMessageProps extends Partial<AbsoluteCssProps> {
+  text: string;
+  isError: boolean;
 }
