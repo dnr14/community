@@ -21,7 +21,10 @@ const writeSlice = createSlice({
     addCategory: (state, { payload }: PayloadAction<WriteSliceInit['category']>) => {
       state.category = payload;
     },
+    addContent: (state, { payload }: PayloadAction<string>) => {
+      state.content = payload;
+    },
   },
 });
-export const { addTitle, addCategory } = writeSlice.actions;
+export const { addTitle, addCategory, addContent } = writeSlice.actions;
 export default writeSlice;
