@@ -78,10 +78,6 @@ img{
   -webkit-user-drag: none;
 }
 
-* {
-    box-sizing: border-box;
-  }
-
 
 `;
 
