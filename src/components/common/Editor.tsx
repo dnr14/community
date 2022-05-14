@@ -18,12 +18,12 @@ import { themeColorGray2, themeFontSizePrimary } from 'assets/styles/theme';
 const Editor: FC<EditorProps> = ({
   placeholder,
   limit = 50,
-  htmlValue = '',
+  defaultValue = '',
   getEditorLength,
   getEditorValue,
   ...rest
 }) => {
-  const [currentHtml, setHtml] = useState(htmlValue);
+  const [currentHtml, setHtml] = useState(defaultValue);
   const [currentLimit, setCurrentLimit] = useState(0);
   const quillRef = useRef<ReactQuill>();
   const MAX_LENGTH = useMemo(() => limit, [limit]);
@@ -78,6 +78,7 @@ const Editor: FC<EditorProps> = ({
         ref={handleRef}
         onChange={hanldeOnChange}
         modules={noToolbar}
+        value={currentHtml}
         placeholder={placeholder}
         theme="snow"
       />

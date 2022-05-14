@@ -54,7 +54,7 @@ declare interface InputProps extends Partial<AbsoluteCssProps> {
 declare interface EditorProps extends Partial<AbsoluteCssProps> {
   placeholder?: string;
   limit?: number;
-  htmlValue?: string;
+  defaultValue?: string;
   getEditorLength?: (langth: number) => void;
   getEditorValue: (value: string) => void;
   isDisabled?: boolean;
