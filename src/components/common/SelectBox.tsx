@@ -148,9 +148,7 @@ const SelectList = styled.ul<{ visible: boolean }>`
   }
   li:hover {
     background: rgb(248, 249, 250);
-    & > span {
-      font-weight: bold;
-    }
+    font-weight: bold;
   }
 `;
 export default SelectBox;

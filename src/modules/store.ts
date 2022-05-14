@@ -8,7 +8,13 @@ const store = configureStore({
 
 export type RootState = ReturnType<typeof reducers>;
 export type AppDispatch = typeof store.dispatch;
-export const useAppDispatch = () => useDispatch<AppDispatch>();
-export const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
+const useAppDispatch = () => useDispatch<AppDispatch>();
+const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
+const useWriteCategorySelector = () =>
+  useTypedSelector(
+    ({ write }) => write,
+    ({ category: prevCate }, { category: currentCate }) => prevCate?.pk === currentCate?.pk,
+  );
+export { useAppDispatch, useTypedSelector, useWriteCategorySelector };
 
 export default store;

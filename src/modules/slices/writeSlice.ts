@@ -1,11 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState = {
+const initialState: WriteSliceInit = {
   title: '',
-  contents: '',
-  category: {
-    name: '',
-    pk: 0,
+  content: '',
+  category: null,
+  errors: {
+    category: null,
+    content: null,
+    title: null,
   },
 };
 
@@ -16,7 +18,10 @@ const writeSlice = createSlice({
     addTitle: (state, { payload }: PayloadAction<string>) => {
       state.title = payload;
     },
+    addCategory: (state, { payload }: PayloadAction<WriteSliceInit['category']>) => {
+      state.category = payload;
+    },
   },
 });
-export const { addTitle } = writeSlice.actions;
+export const { addTitle, addCategory } = writeSlice.actions;
 export default writeSlice;
