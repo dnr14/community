@@ -1,5 +1,5 @@
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
-import { createFlexBox, themeColorGray1, themeColorWhite, themeFontSizePrimary } from 'src/assets/styles/theme';
+import { createFlexBox, themeColorGray1, themeColorWhite, themeFontSizePrimary } from 'assets/styles/theme';
 import styled, { css } from 'styled-components';
 
 const SelectBox: FC<SelectBoxProps> = ({ defaultValue, children, getSelectedId, getSelectedText, ...rest }) => {

@@ -44,6 +44,7 @@ declare interface SelectBoxProps extends Partial<AbsoluteCssProps> {
 /* Input */
 declare interface InputProps extends Partial<AbsoluteCssProps> {
   placeholder?: string;
+  type: string;
 }
 
 /* Editor */
@@ -55,4 +56,7 @@ declare interface EditorProps extends Partial<AbsoluteCssProps> {
   isDisabled?: boolean;
 }
 
-// 인터페이스 수정
+/* Empty */
+declare interface EmptyProps extends Partial<AbsoluteCssProps> {
+  text: string;
+}

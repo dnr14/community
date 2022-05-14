@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { themeColorGray2 } from 'src/assets/styles/theme';
+import { themeColorGray2 } from 'assets/styles/theme';
 import styled, { css } from 'styled-components';
 
-const Input: FC<InputProps> = ({ placeholder, ...rest }) => {
+const Input: FC<InputProps> = ({ placeholder, type, ...rest }) => {
   const { width, top, left, height, lineHeight, fontSize, fontWeight } = rest;
 
   const style = {
@@ -15,7 +15,7 @@ const Input: FC<InputProps> = ({ placeholder, ...rest }) => {
     fontWeight,
   };
 
-  return <StyledInput {...style} placeholder={placeholder} />;
+  return <StyledInput {...style} type={type} placeholder={placeholder} />;
 };
 
 const StyledInput = styled.input<InputProps>`
