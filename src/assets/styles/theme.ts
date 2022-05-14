@@ -1,5 +1,6 @@
 import { ThemeUtilFunc } from 'src/types/styled';
 import { css } from 'styled-components';
+import { Property } from 'csstype';
 
 const color = {
   primary: '#2C7FFF',
@@ -24,7 +25,11 @@ const themeColorGray1: ThemeUtilFunc = ({ theme: { color } }) => color.gray1;
 const themeColorGray2: ThemeUtilFunc = ({ theme: { color } }) => color.gray2;
 const themeFontSizePrimary: ThemeUtilFunc = ({ theme: { fontSize } }) => fontSize.primary;
 
-const createFlexBox = (justifyContent: string, alignItems: string, flexDirection?: string) => css`
+const createFlexBox = (
+  justifyContent: Property.JustifyContent,
+  alignItems: Property.AlignItems,
+  flexDirection?: Property.FlexDirection,
+) => css`
   display: flex;
   justify-content: ${justifyContent};
   align-items: ${alignItems};
