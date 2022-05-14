@@ -2,7 +2,7 @@ import WriteTop from 'components/WriteTop';
 import WriteTitle from 'components/WriteTitle';
 import WriteCategory from 'components/WriteCategory';
 import styled from 'styled-components';
-import WriteEditor from 'components/WriteEditor';
+import WriteContent from 'components/WriteContent';
 import WriteSwiper from 'components/WriteSwiper';
 
 const Write = () => {
@@ -11,7 +11,7 @@ const Write = () => {
       <WriteTop />
       <WriteCategory />
       <WriteTitle />
-      <WriteEditor />
+      <WriteContent />
       <WriteSwiper />
     </WriteContainer>
   );
