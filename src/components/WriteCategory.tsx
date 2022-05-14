@@ -2,12 +2,7 @@ import BaseLine from 'common/BaseLine';
 import SelectBox from 'common/SelectBox';
 import { useMemo } from 'react';
 
-interface Category {
-  text: string;
-  id: string;
-}
-
-const WriteSelectBox = () => {
+const WriteCategory = () => {
   const categorys = useMemo<Category[]>(() => {
     return [
       {
@@ -60,4 +55,4 @@ const WriteSelectBox = () => {
   );
 };
 
-export default WriteSelectBox;
+export default WriteCategory;
