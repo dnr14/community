@@ -55,7 +55,8 @@ declare interface EditorProps extends Partial<AbsoluteCssProps> {
   placeholder?: string;
   limit?: number;
   htmlValue?: string;
-  getEdiotrLength?: (langth: number) => void;
+  getEditorLength?: (langth: number) => void;
+  getEditorValue: (value: string) => void;
   isDisabled?: boolean;
 }
 
