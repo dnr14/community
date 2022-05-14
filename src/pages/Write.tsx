@@ -1,5 +1,5 @@
 import WriteTop from 'components/WriteTop';
-import WriteInput from 'components/WriteInput';
+import WriteTitle from 'src/components/WriteTitle';
 import WriteSelectBox from 'components/WriteSelectBox';
 import styled from 'styled-components';
 import WriteEditor from 'components/WriteEditor';
@@ -10,7 +10,7 @@ const Write = () => {
     <WriteContainer>
       <WriteTop />
       <WriteSelectBox />
-      <WriteInput />
+      <WriteTitle />
       <WriteEditor />
       <WriteSwiper />
     </WriteContainer>

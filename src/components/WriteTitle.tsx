@@ -1,7 +1,7 @@
 import BaseLine from 'common/BaseLine';
 import Input from 'common/Input';
 
-const WriteInput = () => {
+const WriteTitle = () => {
   return (
     <>
       <Input type="text" top="114px" left="20px" placeholder="제목을 작성해주세요" />
@@ -10,4 +10,4 @@ const WriteInput = () => {
   );
 };
 
-export default WriteInput;
+export default WriteTitle;
