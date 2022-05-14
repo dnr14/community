@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { themeColorGray1 } from 'src/assets/styles/theme';
 import styled, { css } from 'styled-components';
 
@@ -16,4 +16,4 @@ const BaseLineWrapper = styled.div<BaseLineProps>`
     `}
 `;
 
-export default BaseLine;
+export default memo(BaseLine);
