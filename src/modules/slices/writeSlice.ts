@@ -53,6 +53,10 @@ const writeSlice = createSlice({
     addContent: (state, { payload }: PayloadAction<string>) => {
       state.content = payload;
     },
+    addImages: (state, { payload }: PayloadAction<Image[]>) => {
+      const { length } = payload;
+      state.images = length ? payload : null;
+    },
   },
 });
 export const { addTitle, addCategory, addContent } = writeSlice.actions;

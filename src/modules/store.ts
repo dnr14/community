@@ -21,6 +21,14 @@ const useWriteCategorySelector = () =>
   );
 const useWriteTitleSelector = () => useTypedSelector(({ write }) => write.title);
 const useWriteContentSelector = () => useTypedSelector(({ write }) => write.content);
-export { useAppDispatch, useTypedSelector, useWriteCategorySelector, useWriteTitleSelector, useWriteContentSelector };
+const useWriteImagesSelector = () => useTypedSelector(({ write }) => write.images);
+export {
+  useAppDispatch,
+  useWriteImagesSelector,
+  useTypedSelector,
+  useWriteCategorySelector,
+  useWriteTitleSelector,
+  useWriteContentSelector,
+};
 
 export default store;
