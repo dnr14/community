@@ -1,7 +1,7 @@
 import { createFlexBox } from 'src/assets/styles/theme';
 import styled from 'styled-components';
 import backIcon from 'assets/images/back.svg';
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
 const BackIcon: FC<BackIconProps> = ({ handleGoBack }) => (
   <BackIconWrapper onClick={handleGoBack}>
@@ -22,4 +22,4 @@ const BackIconWrapper = styled.div`
   }
 `;
 
-export default BackIcon;
+export default memo(BackIcon);

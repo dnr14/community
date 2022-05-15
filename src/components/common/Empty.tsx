@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { createFlexBox, themeFontSizePrimary } from 'assets/styles/theme';
 import styled, { css } from 'styled-components';
 
@@ -19,4 +19,4 @@ const EmptyWrapper = styled.div<Omit<EmptyProps, 'text'>>`
   }};
 `;
 
-export default Empty;
+export default memo(Empty);

@@ -1,10 +1,8 @@
-import { FC } from 'react';
-import { themeColorBlack, themeFontSizePrimary } from 'src/assets/styles/theme';
+import { FC, memo } from 'react';
+import { themeColorBlack, themeFontSizePrimary } from 'assets/styles/theme';
 import styled, { css } from 'styled-components';
 
-const Text: FC<TextProps> = ({ text, ...rest }) => {
-  return <TextWrapper {...rest}>{text}</TextWrapper>;
-};
+const Text: FC<TextProps> = ({ text, ...rest }) => <TextWrapper {...rest}>{text}</TextWrapper>;
 
 const TextWrapper = styled.p<Omit<TextProps, 'text'>>`
   color: ${themeColorBlack};
@@ -21,4 +19,4 @@ const TextWrapper = styled.p<Omit<TextProps, 'text'>>`
   `}
 `;
 
-export default Text;
+export default memo(Text);

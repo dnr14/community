@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import {
   createFlexBox,
   themeColorGray2,
@@ -57,4 +57,4 @@ const ButtonWrapper = styled.span`
   line-height: 24px;
 `;
 
-export default Button;
+export default memo(Button);
