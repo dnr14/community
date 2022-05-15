@@ -19,8 +19,8 @@ const useWriteCategorySelector = () =>
     ({ write }) => write,
     ({ category: prevCate }, { category: currentCate }) => prevCate.categoryPk === currentCate.categoryPk,
   );
-
 const useWriteTitleSelector = () => useTypedSelector(({ write }) => write.title);
-export { useAppDispatch, useTypedSelector, useWriteCategorySelector, useWriteTitleSelector };
+const useWriteContentSelector = () => useTypedSelector(({ write }) => write.content);
+export { useAppDispatch, useTypedSelector, useWriteCategorySelector, useWriteTitleSelector, useWriteContentSelector };
 
 export default store;

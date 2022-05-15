@@ -78,6 +78,7 @@ const Editor: FC<EditorProps> = ({
         ref={handleRef}
         onChange={hanldeOnChange}
         modules={noToolbar}
+        defaultValue={currentHtml}
         placeholder={placeholder}
         theme="snow"
       />
@@ -98,7 +99,6 @@ const EditorWrapper = styled.div<Partial<AbsoluteCssProps>>`
     & .ql-editor {
       padding: 0;
       font-size: ${fontSize ?? themeFontSizePrimary};
-      overflow-y: hidden;
     }
     & .ql-container {
       border: none;
