@@ -78,7 +78,6 @@ const Editor: FC<EditorProps> = ({
         ref={handleRef}
         onChange={hanldeOnChange}
         modules={noToolbar}
-        value={currentHtml}
         placeholder={placeholder}
         theme="snow"
       />
