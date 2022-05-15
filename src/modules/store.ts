@@ -13,7 +13,7 @@ const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
 const useWriteCategorySelector = () =>
   useTypedSelector(
     ({ write }) => write,
-    ({ category: prevCate }, { category: currentCate }) => prevCate?.pk === currentCate?.pk,
+    ({ category: prevCate }, { category: currentCate }) => prevCate?.categoryPk === currentCate?.categoryPk,
   );
 export { useAppDispatch, useTypedSelector, useWriteCategorySelector };
 

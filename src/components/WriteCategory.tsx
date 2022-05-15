@@ -8,26 +8,31 @@ const WriteCategory = () => {
   const dispatch = useAppDispatch();
   const { category } = useWriteCategorySelector();
 
-  const categorys = useMemo<Category[]>(
+  const CATEGORIES = useMemo<Category[]>(
     () => [
       {
-        pk: '1',
+        categoryPk: 1,
+        categoryCode: 'PETITION',
         categoryName: '대선청원',
       },
       {
-        pk: '2',
+        categoryPk: 2,
+        categoryCode: 'FREE',
         categoryName: '자유글',
       },
       {
-        pk: '3',
+        categoryPk: 3,
+        categoryCode: 'QNA',
         categoryName: '질문/답변',
       },
       {
-        pk: '4',
+        categoryPk: 4,
+        categoryCode: 'NEWS',
         categoryName: '뉴스',
       },
       {
-        pk: '5',
+        categoryPk: 5,
+        categoryCode: 'TIP',
         categoryName: '노하우',
       },
     ],
@@ -36,31 +41,31 @@ const WriteCategory = () => {
 
   const categoryEls = useMemo(
     () =>
-      categorys.map(({ categoryName, pk }) => (
-        <li id={pk} key={pk}>
+      CATEGORIES.map(({ categoryName, categoryPk }) => (
+        <li id={String(categoryPk)} key={categoryPk}>
           {categoryName}
         </li>
       )),
-    [categorys],
+    [CATEGORIES],
   );
 
   const handleCategoryOnChange = useCallback(
     (id: string) => {
-      const category = categorys[Number(id) - 1];
+      const category = CATEGORIES[Number(id) - 1];
       dispatch(addCategory(category));
     },
-    [dispatch, categorys],
+    [dispatch, CATEGORIES],
   );
 
   useEffect(() => {
-    if (category === null) dispatch(addCategory(categorys[0]));
-  }, [category, categorys, dispatch]);
+    if (category === null) dispatch(addCategory(CATEGORIES[0]));
+  }, [category, CATEGORIES, dispatch]);
 
   return (
     <>
       <SelectBox
         getSelectedId={handleCategoryOnChange}
-        defaultValue={categorys[0].categoryName}
+        defaultValue={CATEGORIES[0].categoryName}
         left="20px"
         top="68px"
         height="24px"

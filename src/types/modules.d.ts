@@ -4,6 +4,12 @@ declare interface Error {
   message: string;
 }
 
+declare interface Category {
+  categoryPk: number;
+  categoryCode: string;
+  categoryName: string;
+}
+
 declare interface WriteSliceInit {
   title: string;
   content: string;
