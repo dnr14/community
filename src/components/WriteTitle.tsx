@@ -1,7 +1,7 @@
 import BaseLine from 'common/BaseLine';
 import Input from 'common/Input';
 import { addTitle } from 'modules/slices/writeSlice';
-import { useAppDispatch } from 'modules/store';
+import { useAppDispatch, useWriteTitleSelector } from 'modules/store';
 import useDebounce from 'hooks/useDebounce';
 import { useCallback, useEffect, useState } from 'react';
 
@@ -12,19 +12,21 @@ import {
   RegularExpressionError,
   RegularExpressionErrorType,
 } from 'utils/validation';
-import ErrorMessage from './common/ErrorMessage';
+import ErrorMessage from 'common/ErrorMessage';
+
+const TITLE_ID = 'title';
+const TITLE_MAX_LENGTH = 100;
 
 const WriteTitle = () => {
-  const [title, setTitle] = useState('');
+  const reduxWriteTitle = useWriteTitleSelector();
+  const [title, setTitle] = useState(reduxWriteTitle);
   const [error, setError] = useState<RegularExpressionErrorType>({});
-  const TITLE_ID = 'title';
-  const TITLE_MAX_LENGTH = 100;
 
   const dispatch = useAppDispatch();
   const debounce = useDebounce();
 
   /**
-   * title 유효성 검사
+   * title 유효성 검사입니다.
    * @param value title value
    * 제목은 HTML태그 형식의 값은 입력하지 못합니다.
    * 제목은 100자 이상은 입력하지못합니다.
@@ -45,11 +47,10 @@ const WriteTitle = () => {
     }
   }, []);
 
-  const handleOnChange = useCallback(
-    ({ target }: InputChangeEvent) => {
-      const newTitleValue = target.value;
+  const handleTitleOnChange = useCallback(
+    ({ target: { value } }: InputChangeEvent) => {
       setError({});
-      if (handleTitleValidation(newTitleValue)) setTitle(newTitleValue);
+      if (handleTitleValidation(value)) setTitle(value);
     },
     [handleTitleValidation],
   );
@@ -72,7 +73,7 @@ const WriteTitle = () => {
         placeholder="제목을 작성해주세요"
         maxLength={100}
         value={title}
-        onChange={handleOnChange}
+        onChange={handleTitleOnChange}
       />
       <ErrorMessage
         text={error[TITLE_ID]?.message}
