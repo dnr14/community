@@ -59,7 +59,7 @@ const Editor: FC<EditorProps> = ({
         if (currentLength > MAX_LENGTH) {
           unprivilegedEditor.deleteText(MAX_LENGTH, unprivilegedEditor.getLength());
         } else {
-          setHtml(html);
+          setHtml(currentLength !== 0 ? html : '');
           setCurrentLimit(editor.getLength() - 1);
           if (getEditorLength instanceof Function) getEditorLength(currentLength);
         }
