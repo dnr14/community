@@ -7,14 +7,20 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from 'assets/styles/theme';
 import { Provider } from 'react-redux';
 import store from 'modules/store';
+import { persistStore } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
+
+const persistor = persistStore(store);
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <BrowserRouter>
     <ThemeProvider theme={theme}>
       <Provider store={store}>
-        <GlobalStyle />
-        <App />
+        <PersistGate loading={null} persistor={persistor}>
+          <GlobalStyle />
+          <App />
+        </PersistGate>
       </Provider>
     </ThemeProvider>
   </BrowserRouter>,

@@ -13,7 +13,8 @@ declare interface Category {
 declare interface WriteSliceInit {
   title: string;
   content: string;
-  category: Category | null;
+  category: Category;
+  categories: Category[];
   errors: {
     [key in ErrorsKeys]: Error | null;
   };
