@@ -33,6 +33,7 @@ const initialState: WriteSliceInit = {
   content: '',
   category: CATEGORIES[0],
   categories: CATEGORIES,
+  images: null,
   errors: {
     category: null,
     content: null,
@@ -59,5 +60,5 @@ const writeSlice = createSlice({
     },
   },
 });
-export const { addTitle, addCategory, addContent } = writeSlice.actions;
+export const { addTitle, addCategory, addContent, addImages } = writeSlice.actions;
 export default writeSlice;

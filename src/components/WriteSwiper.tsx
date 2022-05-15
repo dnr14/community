@@ -22,6 +22,8 @@ const WriteSwiper = () => {
   const handleFileRemove = useCallback(
     (selectedIdx: number) => () => {
       if (images) {
+        const { url } = images[selectedIdx];
+        URL.revokeObjectURL(url);
         dispatch(addImages(images.filter((_, idx) => idx !== selectedIdx)));
       }
     },
@@ -29,31 +31,64 @@ const WriteSwiper = () => {
   );
 
   const handleFilesOnChange = useCallback(
-    ({ target: { files } }: ChangeEvent<HTMLInputElement>) => {
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const { files } = event.target;
       if (files === null || files.length === 0) return;
 
       const old_files = images;
       const new_files = Array.from(files);
+      const OLD_FILES_LENG = old_files?.length ?? 0;
+      const NEW_FILES_LENG = new_files.length;
+      const CURRENT_FILES_LENG = OLD_FILES_LENG + NEW_FILES_LENG;
+      const MAX_UPLOAD_FILES = 6;
+      const MAX_FILE_SIZE = 1 * 1024 * 1024; // 1MB
 
-      const createImgURLs = (files: File[]): Image[] =>
-        files.map(file => ({
-          fileName: file.name,
-          url: URL.createObjectURL(file),
-        }));
+      try {
+        /* 파일 유효성 검사 */
+        /* 1. 사이즈는 1MB가 넘으면 안됩니다. */
+        /* 2. 확장자는 jpeg,png,jpg만 허용됩니다. */
+        /* 3. 한번에 올릴수 있는 파일 개수는 6개 까지입니다. */
+        /* 4. 최대 업로드할 수 있는 파일은 6개입니다. */
+        const isFileValidation = ({ type, size }: File) => {
+          if (CURRENT_FILES_LENG > MAX_UPLOAD_FILES)
+            throw new Error(`최대 ${MAX_UPLOAD_FILES}개까지 업로드할 수 있습니다.`);
+          if (NEW_FILES_LENG > MAX_UPLOAD_FILES)
+            throw new Error(`한번에 최대 ${MAX_UPLOAD_FILES}개까지 업로드할 수 있습니다.`);
+          if (type !== 'image/jpeg' && type !== 'image/png' && type !== 'image/jpg') {
+            throw new Error('JPEG, PNG, JPG 파일만 업로드 가능합니다.');
+          }
+          if (size >= MAX_FILE_SIZE) {
+            throw new Error('1MB 이하의 파일만 업로드 가능합니다.');
+          }
+        };
 
-      const isFileDuplicatedCheck = (files: Image[], source: string) => {
-        const isDuplicated = files.find(({ fileName }) => fileName === source);
-        return isDuplicated;
-      };
+        const createImgURLs = (files: File[]): Image[] =>
+          files.map(file => ({
+            fileName: file.name,
+            url: URL.createObjectURL(file),
+          }));
 
-      /** 이미 올라간 이미지는 제거하고 새로 들어온 이미지만 필터링해서 반환합니다. */
-      const removeDuplicatesImgFiles = old_files
-        ? new_files.filter(({ name }) => !isFileDuplicatedCheck(old_files, name))
-        : new_files;
+        const isFileDuplicatedCheck = (files: Image[], source: string) => {
+          const isDuplicated = files.find(({ fileName }) => fileName === source);
+          return isDuplicated;
+        };
 
-      const imgURLs = createImgURLs(removeDuplicatesImgFiles);
+        new_files.forEach(isFileValidation);
 
-      dispatch(addImages(old_files ? old_files.concat(imgURLs) : imgURLs));
+        /** 이미 올라간 이미지는 제거하고 새로 들어온 이미지만 필터링해서 반환합니다. */
+        const removeDuplicatesImgFiles = old_files
+          ? new_files.filter(({ name }) => !isFileDuplicatedCheck(old_files, name))
+          : new_files;
+
+        const imgURLs = createImgURLs(removeDuplicatesImgFiles);
+        dispatch(addImages(old_files ? old_files.concat(imgURLs) : imgURLs));
+      } catch (error) {
+        event.target.files = null;
+        if (error instanceof Error) {
+          const { message } = error;
+          alert(message);
+        }
+      }
     },
     [dispatch, images],
   );
@@ -89,33 +124,6 @@ const WriteSwiper = () => {
         <img src={pictureImg} alt="pictureImg" />
         <FileButtonText>사진({IMG_FILES_LENGTH}/6)</FileButtonText>
       </FileButtonWrapper>
-      {/* <button
-        style={{
-          position: 'absolute',
-          zIndex: 100,
-        }}
-        onClick={() => {
-          const convertURLtoFile = async (url: string) => {
-            const response = await fetch(url);
-            const data = await response.blob();
-            console.log('data=>', data, url);
-            const ext = url.split('.').pop(); // url 구조에 맞게 수정할 것
-            const filename = url.split('/').pop(); // url 구조에 맞게 수정할 것
-            const metadata = { type: data.type };
-            return new File([data], filename!, metadata);
-          };
-          convertURLtoFile(test).then(file => console.log(file));
-
-          // const file = await fetch(test)
-          //   .then(r => r.blob())
-          //   .then(blobFile => new File([blobFile], 'fileNameGoesHere', { type: 'image/png' }));
-          // const blob = await fetch(test).then(r => r.blob());
-          // console.log(file);
-          // setImgFiles([file]);
-        }}
-      >
-        클릭
-      </button> */}
       <BaseLine top="524px" />
     </>
   );
@@ -124,6 +132,7 @@ const WriteSwiper = () => {
 const SwiperImgWrapper = styled.div`
   position: absolute;
   height: 100%;
+  width: 100%;
   & > img {
     width: 100%;
     height: 100%;
