@@ -7,7 +7,9 @@ AWS.config.update({
   }),
 });
 
-export const s3Upload = (file: File, fileName: string, type: string) => {
+export const s3Upload = (file: File) => {
+  const type = file.type.split('/').pop() ?? 'jpg';
+  const fileName = file.name;
   const upload = new AWS.S3.ManagedUpload({
     params: {
       Bucket: process.env.REACT_APP_S3_BUCKET ?? '', // 업로드할 대상 버킷명

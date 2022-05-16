@@ -7,7 +7,7 @@ function App() {
   return (
     <Container>
       <Switch>
-        <Route path="/" exact component={Home} />
+        <Route path="/community/list" exact component={Home} />
         <Route path="/community/post/new" component={Write} />
       </Switch>
     </Container>

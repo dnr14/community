@@ -5,10 +5,10 @@ import {
   themeColorPrimary,
   themeColorWhite,
   themeFontSizePrimary,
-} from 'src/assets/styles/theme';
+} from 'assets/styles/theme';
 import styled, { css } from 'styled-components';
 
-const Button: FC<ButtonProps> = ({ text, ...rest }) => {
+const Button: FC<ButtonProps> = ({ text, disabled, onClick, ...rest }) => {
   const { width, height, left, right, bottom, top, fontWeight } = rest;
 
   const style = {
@@ -22,7 +22,7 @@ const Button: FC<ButtonProps> = ({ text, ...rest }) => {
   };
 
   return (
-    <ButtonContainer {...style}>
+    <ButtonContainer {...style} disabled={disabled} onClick={onClick}>
       <ButtonWrapper>{text}</ButtonWrapper>
     </ButtonContainer>
   );

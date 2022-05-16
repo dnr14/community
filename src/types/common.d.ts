@@ -26,6 +26,8 @@ declare interface TextProps extends Partial<AbsoluteCssProps> {
 /* Button */
 declare interface ButtonProps extends Partial<AbsoluteCssProps> {
   text: string;
+  disabled?: boolean;
+  onClick?: () => void;
 }
 
 /* CommunityTop */

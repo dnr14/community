@@ -25,3 +25,17 @@ declare interface WriteSliceInit {
     [key in ErrorsKeys]: Error | null;
   };
 }
+
+declare interface Post {
+  categoryPk: number;
+  categoryName: string;
+  title: string;
+  content: string;
+  viewCount: number;
+  likeCount: number;
+  commentCount: number;
+  imageUrl: string[] | null;
+  writtenAt: string;
+  writerNickName: string;
+  writerProfileUrl: string;
+}
