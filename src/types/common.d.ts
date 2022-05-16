@@ -25,7 +25,7 @@ declare interface TextProps extends Partial<AbsoluteCssProps> {
 
 /* Button */
 declare interface ButtonProps extends Partial<AbsoluteCssProps> {
-  text: string;
+  children: React.ReactNode;
   disabled?: boolean;
   onClick?: () => void;
 }

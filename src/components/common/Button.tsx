@@ -8,7 +8,7 @@ import {
 } from 'assets/styles/theme';
 import styled, { css } from 'styled-components';
 
-const Button: FC<ButtonProps> = ({ text, disabled, onClick, ...rest }) => {
+const Button: FC<ButtonProps> = ({ disabled, onClick, children, ...rest }) => {
   const { width, height, left, right, bottom, top, fontWeight } = rest;
 
   const style = {
@@ -22,13 +22,13 @@ const Button: FC<ButtonProps> = ({ text, disabled, onClick, ...rest }) => {
   };
 
   return (
-    <ButtonContainer {...style} disabled={disabled} onClick={onClick}>
-      <ButtonWrapper>{text}</ButtonWrapper>
-    </ButtonContainer>
+    <ButtonWrapper {...style} disabled={disabled} onClick={onClick}>
+      {children}
+    </ButtonWrapper>
   );
 };
 
-const ButtonContainer = styled.button<Omit<ButtonProps, 'text'>>`
+const ButtonWrapper = styled.button<Omit<ButtonProps, 'text'>>`
   position: absolute;
   cursor: pointer;
   border-radius: 8px;
@@ -39,7 +39,7 @@ const ButtonContainer = styled.button<Omit<ButtonProps, 'text'>>`
   color: ${themeColorWhite};
   ${createFlexBox('center', 'center')};
   gap: 6px;
-  ${({ width, height, left, right, bottom, top, fontWeight }) => css`
+  ${({ width, height, left, right, bottom, top, fontWeight, lineHeight }) => css`
     width: ${width};
     height: ${height};
     left: ${left};
@@ -47,14 +47,11 @@ const ButtonContainer = styled.button<Omit<ButtonProps, 'text'>>`
     bottom: ${bottom};
     top: ${top};
     font-weight: ${fontWeight ?? '700'};
+    line-height: ${lineHeight ?? 24};
   `}
   &:disabled {
     background: ${themeColorGray2};
   }
-`;
-
-const ButtonWrapper = styled.span`
-  line-height: 24px;
 `;
 
 export default memo(Button);

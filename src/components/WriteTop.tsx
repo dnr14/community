@@ -76,14 +76,15 @@ const WriteTop = () => {
         top="calc(50% - 21px / 2 - 0.5px)"
       />
       <Button
-        text="완료"
         width="64px"
         height="36px"
         top="10px"
         left="286px"
         disabled={isDisabled}
         onClick={handleCreateCommunityPost}
-      />
+      >
+        완료
+      </Button>
       <BaseLine top="56px" />
     </CommunityTop>
   );
