@@ -12,3 +12,13 @@ declare type CreatePostFun = (
 declare interface PostProps {
   post: Post;
 }
+
+/* HomeEmpty */
+declare interface HomeEmptyProp {
+  text: string;
+}
+/* Content */
+declare interface ContentProps extends Pick<Post, 'title' | 'content' | 'imageUrl'> {
+  isTextOverflow?: boolean;
+  isDetail?: boolean;
+}

@@ -22,6 +22,7 @@ const useWriteCategorySelector = () =>
 const useWriteTitleSelector = () => useTypedSelector(({ write }) => write.title);
 const useWriteContentSelector = () => useTypedSelector(({ write }) => write.content);
 const useWriteImagesSelector = () => useTypedSelector(({ write }) => write.images);
+const usePostSelector = (_pk: number) => useTypedSelector(({ list }) => list.posts.find(({ pk }) => pk === _pk));
 export {
   useAppDispatch,
   useWriteImagesSelector,
@@ -29,6 +30,7 @@ export {
   useWriteCategorySelector,
   useWriteTitleSelector,
   useWriteContentSelector,
+  usePostSelector,
 };
 
 export default store;

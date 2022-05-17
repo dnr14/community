@@ -58,3 +58,8 @@ declare type FetchPostThunkReturn = {
   posts: Post[];
   page: number;
 };
+
+/* likeSlice */
+declare interface LikeSliceInit {
+  likePks: number[];
+}

@@ -95,6 +95,10 @@ const listSlice = createSlice({
       state.posts = [];
       state.status = 'idle';
     },
+    setPostUpdate: (state, { payload }: PayloadAction<Post>) => {
+      const _pk = payload.pk;
+      state.posts = state.posts.map(post => (_pk !== post.pk ? post : payload));
+    },
   },
   extraReducers: builder =>
     builder
@@ -116,5 +120,5 @@ const listSlice = createSlice({
         state.status = 'failed';
       }),
 });
-export const { setCategory, setListSliceInit } = listSlice.actions;
+export const { setCategory, setListSliceInit, setPostUpdate } = listSlice.actions;
 export default listSlice;

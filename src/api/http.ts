@@ -39,9 +39,9 @@ const http: HTTPMethod = {
       throw errorHandler(e);
     }
   },
-  put: async (url, body, config) => {
+  patch: async (url, body, config) => {
     try {
-      const res = await axiosInstance.put(url, body, config);
+      const res = await axiosInstance.patch(url, body, config);
       return res.data;
     } catch (e) {
       throw errorHandler(e);

@@ -2,6 +2,8 @@ import { Switch, Route, Link } from 'react-router-dom';
 import List from 'pages/List';
 import styled from 'styled-components';
 import Write from 'pages/Write';
+import Detail from './pages/Detail';
+import HomeEmpty from './components/HomeEmpty';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         </Route>
         <Route path="/community/list" exact component={List} />
         <Route path="/community/post/new" component={Write} />
+        <Route path="/community/post/:post_pk" component={Detail} />
+        <Route path="*" render={() => <HomeEmpty text="없는 경로입니다.😰" />} />
       </Switch>
     </Container>
   );

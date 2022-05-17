@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+const NAME = 'writeSlice';
 const CATEGORIES = [
   {
     categoryPk: 1,
@@ -37,7 +38,7 @@ const initialState: WriteSliceInit = {
 };
 
 const writeSlice = createSlice({
-  name: 'writeSlice',
+  name: NAME,
   initialState: initialState,
   reducers: {
     addTitle: (state, { payload }: PayloadAction<string>) => {

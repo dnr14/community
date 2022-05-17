@@ -1,7 +1,7 @@
 import { SwiperSlide } from 'swiper/react';
 import styled from 'styled-components';
-import closeImg from 'assets/images/writeSwiper/close.svg';
-import pictureImg from 'assets/images/writeSwiper/picture.svg';
+import closeImg from 'assets/images/writeImages/close.svg';
+import pictureImg from 'assets/images/writeImages/picture.svg';
 import BaseLine from 'common/BaseLine';
 import { ChangeEvent, useCallback, useMemo, useRef } from 'react';
 import { createFlexBox, themeColorPrimary } from 'assets/styles/theme';

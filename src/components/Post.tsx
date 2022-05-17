@@ -4,9 +4,11 @@ import Profile from './Profile';
 import Content from './Content';
 import PostInformation from './PostInformation';
 import { forwardRef, memo } from 'react';
+import { Link } from 'react-router-dom';
 
-const Post = forwardRef<HTMLDivElement, PostProps>(function Post({ post }, ref) {
+const Post = forwardRef<HTMLAnchorElement, PostProps>(function Post({ post }, ref) {
   const {
+    pk,
     title,
     categoryName,
     content,
@@ -21,14 +23,14 @@ const Post = forwardRef<HTMLDivElement, PostProps>(function Post({ post }, ref) 
 
   return (
     <>
-      <PostContainer ref={ref}>
+      <PostContainer to={{ pathname: `/community/post/${pk}`, state: post }} ref={ref}>
         <Profile
           categoryName={categoryName}
           writerNickName={writerNickName}
           writtenAt={writtenAt}
           writerProfileUrl={writerProfileUrl}
         />
-        <Content title={title} content={content} imageUrl={imageUrl} />
+        <Content title={title} content={content} imageUrl={imageUrl} isTextOverflow />
         <PostInformation commentCount={commentCount} likeCount={likeCount} viewCount={viewCount} />
       </PostContainer>
       <BaseLine height="6px" />
@@ -36,7 +38,8 @@ const Post = forwardRef<HTMLDivElement, PostProps>(function Post({ post }, ref) 
   );
 });
 
-const PostContainer = styled.div`
+const PostContainer = styled(Link)`
+  display: block;
   padding: 0px 26px 23px 26px;
   &:nth-child(n + 2) {
     padding-top: 26px;

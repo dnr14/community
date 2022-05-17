@@ -11,4 +11,4 @@ declare type UseInfinityScrollFunc = (
 
 declare type HandleObserverFunc = ([entry]: IntersectionObserverEntry[], observer: IntersectionObserver) => void;
 
-declare type HandleObserver = (node: HTMLDivElement | null) => void;
+declare type HandleObserver = (node: HTMLElement | null) => void;
