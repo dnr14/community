@@ -2,6 +2,16 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const CATEGORIES = [
   {
+    categoryPk: 6,
+    categoryCode: 'ALL',
+    categoryName: '전체',
+  },
+  {
+    categoryPk: 7,
+    categoryCode: 'POPULAR',
+    categoryName: '⭐인기글',
+  },
+  {
     categoryPk: 1,
     categoryCode: 'PETITION',
     categoryName: '대선청원',

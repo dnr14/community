@@ -6,16 +6,16 @@ const Text: FC<TextProps> = ({ text, ...rest }) => <TextWrapper {...rest}>{text}
 
 const TextWrapper = styled.p<Omit<TextProps, 'text'>>`
   color: ${themeColorBlack};
-  font-size: ${themeFontSizePrimary};
-  font-weight: 700;
   position: absolute;
 
-  ${({ lineHeight, height, top, left, right }) => css`
+  ${({ lineHeight, height, top, left, right, fontSize, fontWeight }) => css`
     line-height: ${lineHeight};
     height: ${height};
     left: ${left};
     right: ${right};
     top: ${top};
+    font-size: ${fontSize ?? themeFontSizePrimary};
+    font-weight: ${fontWeight ?? 700};
   `}
 `;
 

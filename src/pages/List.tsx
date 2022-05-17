@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import ListWriteButton from 'components/ListWriteButton';
-import ListTop from 'components/ListTop';
+import PostWriteButton from 'components/PostWriteButton';
+import ListCategories from 'components/ListCategories';
 
 const List = () => {
   return (
     <ListContainer>
-      <ListTop />
-      <ListWriteButton />
+      <ListCategories />
+      <PostWriteButton />
     </ListContainer>
   );
 };
