@@ -72,3 +72,14 @@ declare interface ErrorMessageProps extends Partial<AbsoluteCssProps> {
   text: string;
   isError: boolean;
 }
+
+/* CommonSwiper */
+declare module 'CommonSwiper' {
+  import { SwiperProps } from 'swiper/react';
+  interface CommonSwiperProp extends SwiperProps {
+    children: React.ReactNode;
+    top?: string;
+    left?: string;
+    swiperWidthOffset?: string;
+  }
+}
