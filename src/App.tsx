@@ -1,5 +1,5 @@
 import { Switch, Route } from 'react-router-dom';
-import Home from 'pages/Home';
+import List from 'pages/List';
 import styled from 'styled-components';
 import Write from 'pages/Write';
 
@@ -7,7 +7,7 @@ function App() {
   return (
     <Container>
       <Switch>
-        <Route path="/community/list" exact component={Home} />
+        <Route path="/community/list" exact component={List} />
         <Route path="/community/post/new" component={Write} />
       </Switch>
     </Container>
