@@ -29,7 +29,6 @@ const Button: FC<ButtonProps> = ({ disabled, onClick, children, ...rest }) => {
 };
 
 const ButtonWrapper = styled.button<Omit<ButtonProps, 'text'>>`
-  position: absolute;
   cursor: pointer;
   border-radius: 8px;
   padding: 12px 8px;
@@ -40,6 +39,7 @@ const ButtonWrapper = styled.button<Omit<ButtonProps, 'text'>>`
   ${createFlexBox('center', 'center')};
   gap: 6px;
   ${({ width, height, left, right, bottom, top, fontWeight, lineHeight }) => css`
+    position: ${top || left ? 'absolute' : 'static'};
     width: ${width};
     height: ${height};
     left: ${left};

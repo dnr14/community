@@ -86,3 +86,8 @@ declare module 'CommonSwiper' {
     left?: string;
   }
 }
+
+/* Progress */
+declare interface ProgressProps {
+  isLoading: boolean;
+}

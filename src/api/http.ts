@@ -18,7 +18,7 @@ const http: HTTPMethod = {
   get: async (url, config) => {
     try {
       const res = await axiosInstance.get(url, config);
-      return res.data.response;
+      return res.data;
     } catch (e) {
       throw errorHandler(e);
     }
@@ -26,7 +26,7 @@ const http: HTTPMethod = {
   delete: async (url, config) => {
     try {
       const res = await axiosInstance.delete(url, config);
-      return res.data.response;
+      return res.data;
     } catch (e) {
       throw errorHandler(e);
     }
@@ -34,7 +34,7 @@ const http: HTTPMethod = {
   post: async (url, body, config) => {
     try {
       const res = await axiosInstance.post(url, body, config);
-      return res.data.response;
+      return res.data;
     } catch (e) {
       throw errorHandler(e);
     }
@@ -42,7 +42,7 @@ const http: HTTPMethod = {
   put: async (url, body, config) => {
     try {
       const res = await axiosInstance.put(url, body, config);
-      return res.data.response;
+      return res.data;
     } catch (e) {
       throw errorHandler(e);
     }

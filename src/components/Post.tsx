@@ -3,9 +3,9 @@ import BaseLine from 'common/BaseLine';
 import Profile from './Profile';
 import Content from './Content';
 import PostInformation from './PostInformation';
-import { FC } from 'react';
+import { forwardRef, memo } from 'react';
 
-const Post: FC<PostProps> = ({ post }) => {
+const Post = forwardRef<HTMLDivElement, PostProps>(function Post({ post }, ref) {
   const {
     title,
     categoryName,
@@ -21,7 +21,7 @@ const Post: FC<PostProps> = ({ post }) => {
 
   return (
     <>
-      <PostContainer>
+      <PostContainer ref={ref}>
         <Profile
           categoryName={categoryName}
           writerNickName={writerNickName}
@@ -34,7 +34,7 @@ const Post: FC<PostProps> = ({ post }) => {
       <BaseLine height="6px" />
     </>
   );
-};
+});
 
 const PostContainer = styled.div`
   padding: 0px 26px 23px 26px;
@@ -43,4 +43,4 @@ const PostContainer = styled.div`
   }
 `;
 
-export default Post;
+export default memo(Post);

@@ -1,3 +1,4 @@
+/* writeSlice */
 declare interface Category {
   categoryPk: number;
   categoryCode: string;
@@ -31,3 +32,29 @@ declare interface Post {
   writerNickName: string;
   writerProfileUrl: string;
 }
+
+/* listSlice */
+declare type StatusType = 'loading' | 'idle' | 'success' | 'failed';
+
+declare interface ListSliceInit {
+  category: number;
+  categories: Category[];
+  page: number;
+  status: StatusType;
+  isLastPage: boolean;
+  isEmpty: boolean;
+  posts: Post[];
+}
+
+declare interface FetchPostsThunkPayload {
+  page: number;
+  categoryPk: number;
+}
+declare type CreateFetchArticlesPayloadFunc = (
+  categoryPk: FetchPostsThunkPayload['categoryPk'],
+  page: FetchPostsThunkPayload['page'],
+) => FetchPostsThunkPayload;
+declare type FetchPostThunkReturn = {
+  posts: Post[];
+  page: number;
+};

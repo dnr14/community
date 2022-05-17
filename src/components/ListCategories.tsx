@@ -4,16 +4,20 @@ import { createFlexBox, themeColorPrimary, themeColorWhite } from 'assets/styles
 import styled from 'styled-components';
 import { SwiperSlide } from 'swiper/react';
 import CommonSwiper from 'common/CommonSwiper';
-import { useState } from 'react';
+import { memo } from 'react';
 import starImg from 'assets/images/list/star.svg';
+import { useDispatch } from 'react-redux';
+import { setCategory } from 'modules/slices/listSlice';
+import { useCallback } from 'react';
 
 const ListCategories = () => {
-  const { categories } = useTypedSelector(({ write }) => write);
-  const [currentCategory, setCurrentCategory] = useState<number>(categories[0].categoryPk);
+  const { categories, category } = useTypedSelector(({ list }) => list);
+  const dispatch = useDispatch();
 
-  const handleCategoryOnClick = (categoryPk: number) => () => {
-    setCurrentCategory(categoryPk);
-  };
+  const handleCategoryOnClick = useCallback(
+    (categoryPk: number) => () => dispatch(setCategory(categoryPk)),
+    [dispatch],
+  );
 
   return (
     <>
@@ -23,7 +27,7 @@ const ListCategories = () => {
           {categories.map(({ categoryName, categoryPk }) => (
             <SwiperSlide
               key={categoryPk}
-              className={currentCategory === categoryPk ? 'active' : ''}
+              className={category === categoryPk ? 'active' : ''}
               onClick={handleCategoryOnClick(categoryPk)}
             >
               {categoryPk === 7 && <img src={starImg} alt="starImg" />}
@@ -54,4 +58,4 @@ const CategoriesSwiperContainer = styled.div`
   }
 `;
 
-export default ListCategories;
+export default memo(ListCategories);
