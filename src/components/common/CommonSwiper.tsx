@@ -7,14 +7,20 @@ import { Swiper } from 'swiper/react';
 const CommonSwiper: FC<CommonSwiperProp> = ({
   children,
   spaceBetween,
-  slidesPerView,
+  slidesPerView = 'auto',
   top,
   left,
-  swiperWidthOffset,
+  slidesOffsetAfter,
 }) => {
   return (
-    <CommonSwiperWrapper top={top} left={left} swiperWidthOffset={swiperWidthOffset}>
-      <Swiper spaceBetween={spaceBetween} slidesPerView={slidesPerView}>
+    <CommonSwiperWrapper top={top} left={left}>
+      <Swiper
+        spaceBetween={spaceBetween}
+        slidesPerView={slidesPerView}
+        slideToClickedSlide
+        allowTouchMove
+        slidesOffsetAfter={slidesOffsetAfter}
+      >
         {children}
       </Swiper>
     </CommonSwiperWrapper>
@@ -30,9 +36,6 @@ const CommonSwiperWrapper = styled.div<CommonSwiperProp>`
     top: ${top};
     left: ${left};
   `}
-  & .swiper {
-    width: calc(100% + ${({ swiperWidthOffset }) => swiperWidthOffset ?? 0});
-  }
 `;
 
 export default CommonSwiper;

@@ -80,6 +80,5 @@ declare module 'CommonSwiper' {
     children: React.ReactNode;
     top?: string;
     left?: string;
-    swiperWidthOffset?: string;
   }
 }

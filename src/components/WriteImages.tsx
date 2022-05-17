@@ -11,7 +11,6 @@ import { addImages } from 'modules/slices/writeSlice';
 import CommonSwiper from 'common/CommonSwiper';
 
 const IMG_MARGIN = 16;
-const SlIDES_PERVIEW = 3;
 
 const WriteImages = () => {
   const images = useWriteImagesSelector();
@@ -97,7 +96,7 @@ const WriteImages = () => {
     () =>
       images ? (
         <WriteSwiperContainer>
-          <CommonSwiper spaceBetween={IMG_MARGIN} slidesPerView={SlIDES_PERVIEW} top="377px" left="20px">
+          <CommonSwiper spaceBetween={IMG_MARGIN} top="377px" left="20px" slidesOffsetAfter={20}>
             {images.map(({ url, fileName }, idx) => (
               <SwiperSlide key={idx}>
                 <SwiperImgWrapper>
