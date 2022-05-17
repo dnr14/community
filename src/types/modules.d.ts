@@ -1,9 +1,3 @@
-declare type ErrorsKeys = 'title' | 'content' | 'category';
-declare interface Error {
-  isError: boolean;
-  message: string;
-}
-
 declare interface Category {
   categoryPk: number;
   categoryCode: string;
@@ -21,12 +15,10 @@ declare interface WriteSliceInit {
   category: Category;
   categories: Category[];
   images: Image[] | null;
-  errors: {
-    [key in ErrorsKeys]: Error | null;
-  };
 }
 
 declare interface Post {
+  pk?: number;
   categoryPk: number;
   categoryName: string;
   title: string;
@@ -34,7 +26,7 @@ declare interface Post {
   viewCount: number;
   likeCount: number;
   commentCount: number;
-  imageUrl: string[] | null;
+  imageUrl: string[] | null | string;
   writtenAt: string;
   writerNickName: string;
   writerProfileUrl: string;

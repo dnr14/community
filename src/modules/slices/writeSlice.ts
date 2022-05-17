@@ -9,7 +9,7 @@ const CATEGORIES = [
   {
     categoryPk: 7,
     categoryCode: 'POPULAR',
-    categoryName: '⭐인기글',
+    categoryName: '인기글',
   },
   {
     categoryPk: 1,
@@ -44,11 +44,6 @@ const initialState: WriteSliceInit = {
   category: CATEGORIES[0],
   categories: CATEGORIES,
   images: null,
-  errors: {
-    category: null,
-    content: null,
-    title: null,
-  },
 };
 
 const writeSlice = createSlice({

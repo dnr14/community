@@ -21,6 +21,10 @@ declare interface BackIconProps extends Partial<AbsoluteCssProps> {
 /* Text */
 declare interface TextProps extends Partial<AbsoluteCssProps> {
   text: string;
+  isTextOverflow?: boolean;
+  overflowLine?: number;
+  margin?: string;
+  color?: string;
 }
 
 /* Button */

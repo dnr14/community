@@ -1,10 +1,11 @@
 import Text from 'components/common/Text';
 import { useTypedSelector } from 'modules/store';
-import { createFlexBox, themeColorPrimary, themeColorWhite } from 'src/assets/styles/theme';
+import { createFlexBox, themeColorPrimary, themeColorWhite } from 'assets/styles/theme';
 import styled from 'styled-components';
 import { SwiperSlide } from 'swiper/react';
 import CommonSwiper from 'common/CommonSwiper';
 import { useState } from 'react';
+import starImg from 'assets/images/list/star.svg';
 
 const ListCategories = () => {
   const { categories } = useTypedSelector(({ write }) => write);
@@ -25,6 +26,7 @@ const ListCategories = () => {
               className={currentCategory === categoryPk ? 'active' : ''}
               onClick={handleCategoryOnClick(categoryPk)}
             >
+              {categoryPk === 7 && <img src={starImg} alt="starImg" />}
               {categoryName}
             </SwiperSlide>
           ))}
@@ -41,6 +43,7 @@ const CategoriesSwiperContainer = styled.div`
     box-sizing: border-box;
     border-radius: 4px;
     ${createFlexBox('center', 'center')};
+    gap: 3px;
     padding: 12px 16px;
     border-radius: 20px;
     border: 1px solid #e8e8e8;

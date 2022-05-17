@@ -5,14 +5,14 @@ import styled, { css } from 'styled-components';
 const BaseLine: FC<BaseLineProps> = ({ ...rest }) => <BaseLineWrapper {...rest} />;
 
 const BaseLineWrapper = styled.div<BaseLineProps>`
-  position: absolute;
   background: ${themeColorGray1};
   ${({ top, width, left, height }) =>
     css`
+      position: ${top || left ? 'absolute' : 'static'};
       height: ${height ?? '1px'};
       top: ${top};
       left: ${left ?? '0px'};
-      width: ${width ?? '360px'};
+      width: ${width ?? '100%'};
     `}
 `;
 

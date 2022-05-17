@@ -7,3 +7,8 @@ declare type CreatePostFun = (
   content: string,
   imageUrl: string[] | null,
 ) => Post;
+
+/* Post */
+declare interface PostProps {
+  post: Post;
+}

@@ -25,8 +25,8 @@ const WriteTop = () => {
     };
 
     const createProfileImg = () => {
-      const index = Math.floor(Math.random() * 4) + 0;
-      const imgName = ['chick', 'fox', 'ailien', 'purple'][index];
+      const index = Math.floor(Math.random() * 4);
+      const imgName = ['chick', 'fox', 'ailien', 'purple-devil'][index];
       return `https://static.zaritalk.com/profiles/profile-57-img-${imgName}-39-39%403x.png`;
     };
 
