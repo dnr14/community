@@ -54,7 +54,12 @@ const writeSlice = createSlice({
       const { length } = payload;
       state.images = length ? payload : null;
     },
+    setWriteSliceInit: state => {
+      state.title = '';
+      state.content = '';
+      state.images = null;
+    },
   },
 });
-export const { addTitle, addCategory, addContent, addImages } = writeSlice.actions;
+export const { addTitle, addCategory, addContent, addImages, setWriteSliceInit } = writeSlice.actions;
 export default writeSlice;

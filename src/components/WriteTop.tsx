@@ -3,11 +3,12 @@ import Button from 'common/Button';
 import CommunityTop from 'common/CommunityTop';
 import Text from 'common/Text';
 import useGoback from 'hooks/useGoback';
-import { useTypedSelector } from 'modules/store';
+import { useAppDispatch, useTypedSelector } from 'modules/store';
 import BaseLine from 'common/BaseLine';
 import http from 'api/http';
 import useFileUpload from 'hooks/useFileUpload';
 import { useHistory } from 'react-router-dom';
+import { setWriteSliceInit } from 'src/modules/slices/writeSlice';
 
 const WriteTop = () => {
   const handleGoback = useGoback();
@@ -15,6 +16,7 @@ const WriteTop = () => {
   const { content, title, category, images } = useTypedSelector(({ write }) => write);
   const isDisabled = content === '' || title === '';
   const { multiUpload } = useFileUpload();
+  const dispatch = useAppDispatch();
 
   const handleCreateCommunityPost = async () => {
     const { categoryName, categoryPk } = category;
@@ -53,14 +55,10 @@ const WriteTop = () => {
       };
     };
 
-    /*
-      기능을 보충해야되는 부분
-      1. S3 업로드 예외처리
-      2. http 예외 처리 
-    */
     const imageUrl = images ? (await createImgUrls(images)).map(({ Location }) => Location) : images;
     await http.post<Post>('/posts', createPost(categoryPk, categoryName, title, content, imageUrl));
     if (images) images.forEach(({ url }) => URL.revokeObjectURL(url));
+    dispatch(setWriteSliceInit());
     replace('/community/list');
   };
 
