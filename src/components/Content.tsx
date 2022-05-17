@@ -1,11 +1,11 @@
 import Text from 'common/Text';
 import styled from 'styled-components';
-import { FC } from 'react';
+import { FC, useCallback } from 'react';
 
 const Content: FC<ContentProps> = ({ title, content, imageUrl, isTextOverflow, isDetail }) => {
   const extractedText = content.replace(/(<([^>]+)>)/gi, '').replace(/&lt;\/?.&gt;/gi, '');
 
-  function convertURLtoImg() {
+  const convertURLtoImg = useCallback(() => {
     if (imageUrl === null) return null;
     const arrayImg = typeof imageUrl === 'string' ? Array.from([imageUrl]) : imageUrl;
 
@@ -24,7 +24,7 @@ const Content: FC<ContentProps> = ({ title, content, imageUrl, isTextOverflow, i
         <img src={arrayImg[0]} alt="img" />
       </ContentImgWrapper>
     );
-  }
+  }, [imageUrl, isDetail]);
 
   return (
     <div>

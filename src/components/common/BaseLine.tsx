@@ -1,5 +1,5 @@
 import { FC, memo } from 'react';
-import { themeColorGray1 } from 'src/assets/styles/theme';
+import { themeColorGray1 } from 'assets/styles/theme';
 import styled, { css } from 'styled-components';
 
 const BaseLine: FC<BaseLineProps> = ({ ...rest }) => <BaseLineWrapper {...rest} />;

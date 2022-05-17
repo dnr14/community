@@ -5,11 +5,7 @@ import { createFlexBox, themeColorGray3 } from 'assets/styles/theme';
 import { FC } from 'react';
 import styled from 'styled-components';
 
-const PostInformation: FC<Pick<Post, 'likeCount' | 'viewCount' | 'commentCount'>> = ({
-  commentCount,
-  likeCount,
-  viewCount,
-}) => {
+const PostInformation: FC<PostInformationProps> = ({ commentCount, likeCount, viewCount }) => {
   return (
     <InformationContainer>
       <InformationWrapper>

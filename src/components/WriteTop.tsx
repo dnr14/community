@@ -8,7 +8,7 @@ import BaseLine from 'common/BaseLine';
 import http from 'api/http';
 import useFileUpload from 'hooks/useFileUpload';
 import { useHistory } from 'react-router-dom';
-import { setWriteSliceInit } from 'src/modules/slices/writeSlice';
+import { setWriteSliceInit } from 'modules/slices/writeSlice';
 
 const WriteTop = () => {
   const handleGoback = useGoback();

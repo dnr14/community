@@ -1,4 +1,4 @@
-import { Theme } from '../assets/styles/theme';
+import { Theme } from 'assets/styles/theme';
 
 declare module 'styled-components' {
   interface DefaultTheme extends Theme {}

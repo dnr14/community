@@ -22,3 +22,5 @@ declare interface ContentProps extends Pick<Post, 'title' | 'content' | 'imageUr
   isTextOverflow?: boolean;
   isDetail?: boolean;
 }
+/* PostInformation */
+declare type PostInformationProps = Pick<Post, 'likeCount' | 'viewCount' | 'commentCount'>;

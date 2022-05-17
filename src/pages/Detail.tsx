@@ -1,7 +1,7 @@
 import DetailTop from 'components/DetailTop';
 import { useLocation } from 'react-router-dom';
 import Profile from 'components/Profile';
-import HomeEmpty from 'components/HomeEmpty';
+import HomeEmpty from 'components/common/HomeEmpty';
 import styled from 'styled-components';
 import Content from 'components/Content';
 import { createFlexBox, themeColorGray3 } from 'assets/styles/theme';

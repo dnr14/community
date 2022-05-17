@@ -8,7 +8,7 @@ import {
 } from 'assets/styles/theme';
 import styled, { css } from 'styled-components';
 
-const Button: FC<ButtonProps> = ({ disabled, onClick, children, ...rest }) => {
+const Button: FC<ButtonProps> = ({ disabled, children, onClick, ...rest }) => {
   const { width, height, left, right, bottom, top, fontWeight } = rest;
 
   const style = {

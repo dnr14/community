@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import Button from 'components/common/Button';
-import Empty from 'components/common/Empty';
+import Button from 'common/Button';
+import Empty from 'common/Empty';
 import { FC } from 'react';
 
 const HomeEmpty: FC<HomeEmptyProp> = ({ text }) => {

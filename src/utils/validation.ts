@@ -10,7 +10,7 @@ export const errorMessages = {
 
 export const isHtmlTag = (value: string) => /(<([^>]+)>)/g.test(value);
 export const isMaxLength = (value: string, maxLength: number) => {
-  return value.length > maxLength;
+  return value.length >= maxLength;
 };
 export const isSpecialChracters = (value: string) =>
   /[\\{\\}\\[\]\\/?.,;:|\\)*~`!^\-_+<>@\\#$%&\\\\=\\(\\'\\"]/gi.test(value);
