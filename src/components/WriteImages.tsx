@@ -1,5 +1,4 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
+import { SwiperSlide } from 'swiper/react';
 import styled from 'styled-components';
 import closeImg from 'assets/images/writeSwiper/close.svg';
 import pictureImg from 'assets/images/writeSwiper/picture.svg';
@@ -9,11 +8,12 @@ import { createFlexBox, themeColorPrimary } from 'assets/styles/theme';
 import Empty from 'common/Empty';
 import { useAppDispatch, useWriteImagesSelector } from 'modules/store';
 import { addImages } from 'modules/slices/writeSlice';
+import CommonSwiper from 'common/CommonSwiper';
 
 const IMG_MARGIN = 16;
 const SlIDES_PERVIEW = 3;
 
-const WriteSwiper = () => {
+const WriteImages = () => {
   const images = useWriteImagesSelector();
   const imgFilesRef = useRef<HTMLInputElement>(null);
   const IMG_FILES_LENGTH = images?.length ?? 0;
@@ -97,7 +97,7 @@ const WriteSwiper = () => {
     () =>
       images ? (
         <WriteSwiperContainer>
-          <Swiper spaceBetween={IMG_MARGIN} slidesPerView={SlIDES_PERVIEW}>
+          <CommonSwiper spaceBetween={IMG_MARGIN} slidesPerView={SlIDES_PERVIEW} top="377px" left="20px">
             {images.map(({ url, fileName }, idx) => (
               <SwiperSlide key={idx}>
                 <SwiperImgWrapper>
@@ -108,7 +108,7 @@ const WriteSwiper = () => {
                 </SwiperImgWrapper>
               </SwiperSlide>
             ))}
-          </Swiper>
+          </CommonSwiper>
         </WriteSwiperContainer>
       ) : (
         <Empty text="게시된 이미지가 없습니다.🔎" top="377px" left="calc(25%)" />
@@ -119,11 +119,11 @@ const WriteSwiper = () => {
   return (
     <>
       {swiper}
-      <FileButtonWrapper htmlFor="files">
+      <ImagesButtonWrapper htmlFor="files">
         <input id="files" multiple accept=".jpg, .png" type="file" onChange={handleFilesOnChange} ref={imgFilesRef} />
         <img src={pictureImg} alt="pictureImg" />
         <FileButtonText>사진({IMG_FILES_LENGTH}/6)</FileButtonText>
-      </FileButtonWrapper>
+      </ImagesButtonWrapper>
       <BaseLine top="524px" />
     </>
   );
@@ -151,12 +151,6 @@ const CloseImgWrapper = styled.div`
 `;
 
 const WriteSwiperContainer = styled.div`
-  position: absolute;
-  top: 377px;
-  left: 20px;
-  width: calc(100% - 20px);
-  overflow: hidden;
-  cursor: pointer;
   & .swiper-slide {
     width: 89px !important;
     height: 83px;
@@ -164,7 +158,7 @@ const WriteSwiperContainer = styled.div`
   }
 `;
 
-const FileButtonWrapper = styled.label`
+const ImagesButtonWrapper = styled.label`
   position: absolute;
   width: 77px;
   height: 20px;
@@ -188,4 +182,4 @@ const FileButtonText = styled.span`
   color: ${themeColorPrimary};
 `;
 
-export default WriteSwiper;
+export default WriteImages;

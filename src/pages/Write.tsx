@@ -3,7 +3,7 @@ import WriteTitle from 'components/WriteTitle';
 import WriteCategory from 'components/WriteCategory';
 import styled from 'styled-components';
 import WriteContent from 'components/WriteContent';
-import WriteSwiper from 'components/WriteSwiper';
+import WriteImages from 'components/WriteImages';
 
 const Write = () => {
   return (
@@ -12,14 +12,14 @@ const Write = () => {
       <WriteCategory />
       <WriteTitle />
       <WriteContent />
-      <WriteSwiper />
+      <WriteImages />
     </WriteContainer>
   );
 };
 
 const WriteContainer = styled.section`
-  position: absolute;
-  width: 100%;
+  position: relative;
+  width: 360px;
   height: 680px;
 `;
 
